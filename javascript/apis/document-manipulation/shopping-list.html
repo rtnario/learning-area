@@ -10,7 +10,7 @@
       }
 
       li button {
-        font-size: 8px;
+        font-size: 12px;
         margin-left: 20px;
         color: #666;
       }
@@ -31,7 +31,60 @@
     </ul>
 
     <script>
+      const shoppingList = document.querySelector("ul");
+      const newItem = document.querySelector("input");
+      const addItem = document.querySelector("button");
 
+      function addToList() {
+        console.log("I was clicked. Arrowly!");
+
+        let val = newItem.value;
+        newItem.value = "";
+
+        let entry = document.createElement("li");
+        let entryName = document.createElement("span");
+        let delBtn = document.createElement("button");
+
+        entry.appendChild(entryName);
+        entry.appendChild(delBtn);
+
+        entryName.textContent = val;
+        delBtn.textContent = "Delete";
+
+        shoppingList.appendChild(entry);
+        delBtn.addEventListener('click', () => entry.remove());
+        newItem.focus();
+      }
+
+      addItem.addEventListener('click', addToList);
+
+/*
+      // MDN solution
+      const list = document.querySelector('ul');
+      const input = document.querySelector('input');
+      const button = document.querySelector('button');
+
+      button.addEventListener('click', () => {
+        const myItem = input.value;
+        input.value = '';
+
+        const listItem = document.createElement('li');
+        const listText = document.createElement('span');
+        const listBtn = document.createElement('button');
+
+        listItem.appendChild(listText);
+        listText.textContent = myItem;
+        listItem.appendChild(listBtn);
+        listBtn.textContent = 'Delete';
+        list.appendChild(listItem);
+
+        listBtn.addEventListener('click', () => {
+          list.removeChild(listItem);
+        });
+
+        input.focus();
+      });
+*/
     </script>
   </body>
 </html>
