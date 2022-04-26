@@ -42,6 +42,13 @@
 
     // Add your code here
 
+    for (i; i >= 2; i--) {
+      if (isPrime(i)) {
+        para.textContent += `${i}, `;
+      }
+    }
+
+    para.textContent = para.textContent.slice(0, -2) + ".";
 
     // Don't edit the code below here!
     const section = document.querySelector('section');

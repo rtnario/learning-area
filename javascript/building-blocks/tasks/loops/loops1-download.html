@@ -31,6 +31,12 @@
 
     // Add your code here
 
+    for (ingredient of myArray) {
+      const item = document.createElement('li');
+      item.innerHTML = ingredient;
+      list.appendChild(item);
+    }
+
     // Don't edit the code below here!
 
     const section = document.querySelector('section');
