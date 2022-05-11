@@ -11,6 +11,114 @@
   </body>
 
     <script>
+      const person = {
+        name: {first: 'Bob', last: 'Smith'},
+        age: 32,
+        bio: function () {
+          // 'this' refers to the current object the code is being written inside
+          console.log(`${this.name.first} ${this['name']['last']} is ${this.age} years old.`);
+        },
+        introduceSelf: function() {
+          console.log(`Hi! I'm ${this.name.first}.`);
+        }
+      };
+
+      // One useful aspect of bracket notation is that it can be used to set
+      // not only member values dynamically, but member names too
+      // not possible with dot notation which only accepts literal names
+      const myDataName = "height";
+      const myDataValue = "1.75m";
+      person[myDataName] = myDataValue;
+
+      person.age = 45;
+      person['name']['last'] = "Cratchit";
+      person['eyes'] = "hazel";
+      person.farewell = function() {
+        console.log("Bye everybody!");
+      }
+
+      function createPerson(name) {
+        const obj = {};
+        obj.name = name;
+        obj.introduceSelf = function() {
+          console.log(`Hi! I'm ${this.name}.`);
+        }
+
+        return obj;
+      }
+
+      const salva = createPerson("Salva");
+      salva.name;
+      salva.introduceSelf();
+
+      // A constructor is just a function called using new
+      function Person(name) {
+        this.name = name;
+        this.introduceSelf = function() {
+          console.log(`Hi! I'm ${this.name}.`);
+        }
+      }
+
+      const frankie = new Person("Frankie");
+      frankie.name;
+      frankie.introduceSelf();
+
+      let band;
+
+      band = {
+        name: "Machinae Supremacy",
+        nationality: "Sweden",
+        genre: "SID Metal",
+        members: 5,
+        formed: 2000,
+        split: false,
+        albums: [{name: "Deus ex Machinae", released: 2004},
+                {name: "Redeemer", released: 2006},
+                {name: "Overworld", released: 2008},
+                {name: "A View from the End of the World", released: 2010},
+                {name: "Rise of a Digital Nation", released: 2012},
+                {name: "Phantom Shadow", released: 2014},
+                {name: "Into the Night World", released: 2016}]           
+      }
+
+      let bandInfo =     
+
+`
+${band.name} is a \
+${band.genre} band from \
+${band.nationality} formed in \
+${band.formed} with \
+${band.members} members currently. \
+Their first album \
+${band.albums[0].name} was released in \
+${band.albums[0].released}.
+`;
+
+      console.log(bandInfo);
+
+      const cat = {
+  name : 'Bertie',
+  breed : 'Cymric',
+  color : 'white',
+  greeting: function() {
+    console.log('Meow!');
+  }
+}
+
+function Cat(name, breed, color) {
+  this.name = name;
+  this.breed = breed;
+  this.color = color;
+  this.greeting = function() {
+    console.log(`Hello, said ${this.name} the ${this.color} ${this.breed}.`);
+  }
+}
+
+let cat1 = new Cat("Akumi", "Siamese", "Black");
+let cat2 = new Cat("Ramon", "Russian Blue", "Gray Charcoal");
+
+cat1.greeting();
+cat2.greeting();
 
     </script>
 </html>
